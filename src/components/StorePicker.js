@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function StorePicker() {
+function StorePicker(props) {
+  const storeNameRef = useRef();
+  const navigate = useNavigate();
+
+  const goToStore = (e) => {
+    e.preventDefault();
+    const storeName = storeNameRef.current.value;
+    const storeUrl = `/store/${storeName}`;
+    navigate(storeUrl);
+  };    
+
   return (
-    <form className='store-selector'>
+    <form onSubmit={goToStore} className='store-selector'>
       <h2>Please Enter A Store</h2>
-      <input type='text' required placeholder='Store Name' />
+      <input ref={storeNameRef} type='text' required placeholder='Store Name' />
       <button>Visit Store</button>
     </form>
   );
