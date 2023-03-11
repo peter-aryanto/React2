@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App0 from './App';
 import reportWebVitals from './reportWebVitals';
 import './css/style.css';
 import StorePicker from './components/StorePicker';
+import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/*<App />*/}
-    <StorePicker />
+    {/*<StorePicker />*/}
+    <App />
   </React.StrictMode>
 );
 
