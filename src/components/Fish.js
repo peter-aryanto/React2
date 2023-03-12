@@ -13,7 +13,7 @@ function Fish(props) {
         <span className='price'>{formatPrice(price)}</span>
       </h3>
       <p>{desc}</p>
-      <button type='button' disabled={!isAvailable}>Add to Cart</button>
+      <button type='button' disabled={!isAvailable}>{isAvailable ? 'Add to Cart' : 'Sold Out'}</button>
     </li>
   );
 }

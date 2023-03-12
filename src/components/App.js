@@ -9,8 +9,8 @@ function App() {
   const [fishes, setFishes] = useState({});
 
   React.useEffect(() => {
-    console.log(`Fishes`);
-    console.log(fishes);
+    // console.log(`Fishes`);
+    // console.log(fishes);
   }, [fishes]);
 
   const addFish = (newFish) => {
@@ -21,7 +21,6 @@ function App() {
 
   const loadSample = () => {
     setFishes(sampleFishes);
-    // console.log(fishes);
   };
 
   return (
