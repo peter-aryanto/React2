@@ -31,6 +31,12 @@ function App() {
         }
       }
     );
+    
+    const localStorageRef = localStorage.getItem(params.storeId);
+    if (localStorageRef) {
+      console.log(localStorageRef);
+      setOrder(JSON.parse(localStorageRef));
+    }
   }, []);
 
   const saveFishes = (allFishes) => {
@@ -45,6 +51,14 @@ function App() {
       }
     } catch {}
   }, [fishes]);
+
+  React.useEffect(() => {
+    try {
+      if (Object.keys(order).length > 0) {
+        localStorage.setItem(params.storeId, JSON.stringify(order))
+      }
+    } catch {}
+  }, [order]);
 
   const addFish = (newFish) => {
     const allFishes = {...fishes};
