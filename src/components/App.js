@@ -35,7 +35,7 @@ function App() {
         </ul>
       </div>
       <Order />
-      <Inventory addFish={addFish} loadSample={loadSample}/>
+      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes}/>
     </div>
   );
 }

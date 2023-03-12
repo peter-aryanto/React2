@@ -45,16 +45,20 @@ function AddFish(props) {
 
   return (
     <form className='fish-edit' onSubmit={addFish}>
-      <input ref={nameRef} type='text' placeholder='Name' />
-      <input ref={priceRef} type='text' placeholder='Price' />
-      <select ref={statusRef} onChange={changeStatus} value={status}>
+    <fieldset disabled={props.fish}>
+      <input ref={nameRef} type='text' placeholder='Name' defaultValue={props.fish?.name}/>
+      <input ref={priceRef} type='text' placeholder='Price' defaultValue={props.fish?.price}/>
+      {!props.fish && <select ref={statusRef} onChange={changeStatus} value={status}>
         {/*<option value='available'>Fresh</option>
         <option value='unavailable'>Sold Out</option>*/}
         {statusOptions.map((s, i) => (<option key={`status${i}`} value={s}>{s}</option>))}
-      </select>
-      <textarea ref={descRef} placeholder='Description'></textarea>
-      <input ref={imgRef} type='text' placeholder='Image' />
-      <button>Add Fish</button>
+      </select>}
+      {props.fish && <input type='text' defaultValue={props.fish?.status} />}
+      <textarea ref={descRef} placeholder='Description' defaultValue={props.fish?.desc}></textarea>
+      <input ref={imgRef} type='text' placeholder='Image' defaultValue={props.fish?.img}/>
+      {!props.fish && <button>Add Fish</button>}
+    </fieldset>
+    {props.fish && <button type='button'>Remove Fish</button>}
     </form>
   );
 }
