@@ -1,17 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, } from 'react';
 import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
+import { firebaseApp, firebaseDb } from '../firebase-helper';
+import { useLocation, useParams } from 'react-router-dom';
+import { getDatabase, ref ,set, onValue } from 'firebase/database';
 
 function App() {
   const [fishes, setFishes] = useState({});
   const [order, setOrder] = useState({});
 
+  const location = useLocation();
+  // console.log(location);
+
+  const params = useParams();
+  // console.log(params.storeId);
+  const firebaseDbPath = `${params.storeId}/fishes`;
+
+  const fishesDbRef = ref(firebaseDb, firebaseDbPath);
+
   React.useEffect(() => {
-    // console.log(`Fishes`);
-    // console.log(fishes);
+    onValue(
+      fishesDbRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setFishes(data);
+        }
+      }
+    );
+  }, []);
+
+  const saveFishes = (allFishes) => {
+    // set(ref(firebaseDb, firebaseDbPath), allFishes);
+    set(fishesDbRef, allFishes);
+  };
+
+  React.useEffect(() => {
+    try {
+      if (Object.keys(fishes).length > 0) {
+        saveFishes(fishes);
+      }
+    } catch {}
   }, [fishes]);
 
   const addFish = (newFish) => {
