@@ -13,7 +13,11 @@ function Fish(props) {
         <span className='price'>{formatPrice(price)}</span>
       </h3>
       <p>{desc}</p>
-      <button type='button' disabled={!isAvailable}>{isAvailable ? 'Add to Cart' : 'Sold Out'}</button>
+      <button
+        type='button'
+        disabled={!isAvailable}
+        onClick={() => props.addToOrder(props.fishKey)}
+      >{isAvailable ? 'Add to Cart' : 'Sold Out'}</button>
     </li>
   );
 }
