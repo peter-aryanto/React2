@@ -38,6 +38,18 @@ function App() {
     setFishes(currentFishes);
   }
 
+  const updateFish = (fishKey, propName, propValue) => {
+    const currentFishes = {...fishes};
+
+    const fish = currentFishes[fishKey];
+    if (!fish || !Object.hasOwn(fish, propName)) {
+      return;
+    }
+
+    fish[propName] = propValue;
+    setFishes(currentFishes);
+  };
+
   return (
     <div className='catch-of-the-day'>
       <div className='menu'>
@@ -49,7 +61,7 @@ function App() {
         </ul>
       </div>
       <Order fishes={fishes} order={order} />
-      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes} removeFish={removeFish} />
+      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes} removeFish={removeFish} updateFish={updateFish} />
     </div>
   );
 }
