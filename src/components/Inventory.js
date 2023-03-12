@@ -9,7 +9,7 @@ function Inventory(props) {
       <button type='button' onClick={props.loadSample}>Load Sample</button>
       <br />
       <br />
-      {Object.keys(fishes).map((k) => (<AddFish key={`inv${k}`} fish={fishes[k]} />))}
+      {Object.keys(fishes).map((k) => (<AddFish key={`inv${k}`} fish={fishes[k]} fishKey={k} removeFish={props.removeFish}/>))}
     </div>
   );
 }

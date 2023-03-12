@@ -31,6 +31,13 @@ function App() {
     setOrder(currentOrder);
   };
 
+  const removeFish = (fishKey) => {
+    const currentFishes = {...fishes};
+    // delete currentFishes[fishKey];
+    currentFishes[fishKey].status = 'Unavailable';
+    setFishes(currentFishes);
+  }
+
   return (
     <div className='catch-of-the-day'>
       <div className='menu'>
@@ -42,7 +49,7 @@ function App() {
         </ul>
       </div>
       <Order fishes={fishes} order={order} />
-      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes}/>
+      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes} removeFish={removeFish} />
     </div>
   );
 }

@@ -58,7 +58,7 @@ function AddFish(props) {
       <input ref={imgRef} type='text' placeholder='Image' defaultValue={props.fish?.img}/>
       {!props.fish && <button>Add Fish</button>}
     </fieldset>
-    {props.fish && <button type='button'>Remove Fish</button>}
+    {props.fish && <button type='button' onClick={() => props.removeFish(props.fishKey)}>Remove Fish</button>}
     </form>
   );
 }
