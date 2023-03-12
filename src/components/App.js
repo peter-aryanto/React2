@@ -3,6 +3,7 @@ import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
 import sampleFishes from '../sample-fishes';
+import Fish from './Fish';
 
 function App() {
   const [fishes, setFishes] = useState({});
@@ -27,6 +28,11 @@ function App() {
     <div className='catch-of-the-day'>
       <div className='menu'>
         <Header />
+        <ul className='fishes'>
+          {Object.keys(fishes).map((k) => (
+            <Fish key={`menu${k}`} fish={fishes[k]}/>
+          ))}
+        </ul>
       </div>
       <Order />
       <Inventory addFish={addFish} loadSample={loadSample}/>
