@@ -1,8 +1,11 @@
 import React from 'react';
+import AddFish from './AddFish';
 
-function Inventory() {
+function Inventory(props) {
   return (
-    <div className='inventory'></div>
+    <div className='inventory'>
+      <AddFish addFish={props.addFish} />
+    </div>
   );
 }
 
