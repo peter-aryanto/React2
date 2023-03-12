@@ -75,6 +75,15 @@ function App() {
     currentOrder[fishKey] = currentOrder[fishKey] + 1 || 1;
     console.log(currentOrder);
     setOrder(currentOrder);
+    // setOrder((prevOrder) => {
+    //   console.log(prevOrder);
+    //   Object.keys(currentOrder).forEach(k => {
+    //     if (prevOrder[k] >= 4) {
+    //       currentOrder[k] = 2;
+    //     }
+    //   });
+    //   return currentOrder;
+    // });
   };
 
   const removeFish = (fishKey) => {
