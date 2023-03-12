@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
+import sampleFishes from '../sample-fishes';
 
 function App() {
   const [fishes, setFishes] = useState({});
@@ -15,7 +16,12 @@ function App() {
     const allFishes = {...fishes};
     allFishes[newFish.name] = newFish;
     setFishes(allFishes);
-  }
+  };
+
+  const loadSample = () => {
+    setFishes(sampleFishes);
+    // console.log(fishes);
+  };
 
   return (
     <div className='catch-of-the-day'>
@@ -23,7 +29,7 @@ function App() {
         <Header />
       </div>
       <Order />
-      <Inventory addFish={addFish} />
+      <Inventory addFish={addFish} loadSample={loadSample}/>
     </div>
   );
 }
