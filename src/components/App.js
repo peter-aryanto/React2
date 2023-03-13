@@ -4,9 +4,9 @@ import Inventory from './Inventory';
 import Order from './Order';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
-import { firebaseApp, firebaseDb } from '../firebase-helper';
+import { firebaseDb } from '../firebase-helper';
 import { useLocation, useParams } from 'react-router-dom';
-import { getDatabase, ref ,set, onValue } from 'firebase/database';
+import { ref ,set, onValue } from 'firebase/database';
 
 function App() {
   const [fishes, setFishes] = useState({});

@@ -16,11 +16,11 @@ function Inventory(props) {
       ref(firebaseDb, `${props.storeId}`),
       (snapshot) => {
         const store = snapshot.val();
-        if (!store) {
-          return;
-        }
+        // if (!store) {
+        //   return;
+        // }
 
-        if (!store.owner) {
+        if (!store?.owner) {
           set(ref(firebaseDb, `${props.storeId}/owner`), userData.uid);
         }
 
