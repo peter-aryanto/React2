@@ -111,6 +111,7 @@ function App() {
     setOrder(currentOrder);
   };
 
+  const storeId = params.storeId; // Added late!
   return (
     <div className='catch-of-the-day'>
       <div className='menu'>
@@ -122,7 +123,7 @@ function App() {
         </ul>
       </div>
       <Order fishes={fishes} order={order} removeFishFromOrder={removeFishFromOrder} />
-      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes} removeFish={removeFish} updateFish={updateFish} />
+      <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes} removeFish={removeFish} updateFish={updateFish} storeId={params.storeId} />
     </div>
   );
 }
