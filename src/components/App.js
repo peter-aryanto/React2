@@ -105,6 +105,12 @@ function App() {
     setFishes(currentFishes);
   };
 
+  const removeFishFromOrder = (k) => {
+    const currentOrder = {...order};
+    delete currentOrder[k];
+    setOrder(currentOrder);
+  };
+
   return (
     <div className='catch-of-the-day'>
       <div className='menu'>
@@ -115,7 +121,7 @@ function App() {
           ))}
         </ul>
       </div>
-      <Order fishes={fishes} order={order} />
+      <Order fishes={fishes} order={order} removeFishFromOrder={removeFishFromOrder} />
       <Inventory addFish={addFish} loadSample={loadSample} fishes={fishes} removeFish={removeFish} updateFish={updateFish} />
     </div>
   );

@@ -18,6 +18,7 @@ function Order(props) {
         {(fish.status ?? '').toLowerCase() === 'available' ?
         `${fish.name}: ${count} * ${formatPrice(fish.price)} = ${formatPrice(count * fish.price)}` :
         `${fish.name} is not available.`}
+        <button type='button' onClick={() => props.removeFishFromOrder(k)}>&times;</button>
       </li>
     );
   }
